@@ -1,9 +1,13 @@
   import { useState } from "react";
   import OpenAI from "openai";
   import "./CustomizeQuestionPaper.css"; 
-  
+  // import { useEffect, useState } from "react";
+
+  const OPENAI_KEY = import.meta.env.VITE_OPENAI_KEY;
+ console.log(OPENAI_KEY);
+ 
   const openai = new OpenAI({
-    apiKey: "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", // Use env variable
+    apiKey: import.meta.env.VITE_OPENAI_KEY,
     dangerouslyAllowBrowser: true,
   });
   
@@ -12,6 +16,18 @@
     const [sections, setSections] = useState([]);
     const [responseText, setResponseText] = useState("");
   
+     
+    // const [openai, setOpenai] = useState(null);
+
+    // useEffect(() => {
+    //   const key = process.env.OPENAI_KEY;
+    //   const instance = new OpenAI({
+    //     apiKey: key,
+    //     dangerouslyAllowBrowser: true, // 🔥 NOT for production
+    //   });
+    //   setOpenai(instance);
+    // }, []);
+
     const handleFileChange = (e) => {
       setSyllabusFile(e.target.files[0]);
     };
