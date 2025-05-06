@@ -8,11 +8,14 @@ const cors = require("cors");
 const uri = "mongodb+srv://vivek:vivek@majorproject.mqt1wvx.mongodb.net/";
 
 app.use(express.json());
+// Load environment variables from .env file
+require('dotenv').config();
+
 app.use(cors({ origin: "*" })); 
 let db;
 
 const openai = new OpenAI({
-  apiKey:"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" , // Use env variable
+  apiKey: process.env.OPENAI_KEY, // Use env variable
   dangerouslyAllowBrowser: true,
 });
 
